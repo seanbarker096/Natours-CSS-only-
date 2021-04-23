@@ -1,0 +1,71 @@
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+//Media queries
+/*
+0-600px: Phone
+600-900px: Tablet portrait
+900-1200px: Tablet landscape
+1200-1800px: Default styling
+1800px: large desktop
+*/
+
+@mixin respond-phone {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+
+/*
+breakpoint arguments
+*  phone
+* tab-port
+* tab-lan
+*big-desktop
+*/
+
+//using ems allows us to account for cases where user may have phone screen
+//but has increased their default font size, meaning they now require a bigger
+//screen
+@mixin respond($breakpoint) {
+  //1rem =10px
+  @if ($breakpoint == big-desktop) {
+    @media only screen and (min-width: 112.5em) {
+      //1800px
+      @content;
+    }
+  }
+
+  @if ($breakpoint == tab-land) {
+    @media only screen and(max-width: 75em) {
+      //1200px
+      @content;
+    }
+  }
+
+  @if ($breakpoint == tab-port) {
+    @media only screen and (max-width: 56.25em) {
+      //900px
+      @content;
+    }
+  }
+
+  @if ($breakpoint == phone) {
+    @media only screen and (max-width: 37.5em) {
+      //600px
+      @content;
+    }
+  }
+}

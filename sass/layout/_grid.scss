@@ -1,0 +1,62 @@
+.col-1-of-2 {
+  //need to specifiy flex-basis here. Otherwise if we have a wrapper div e.g. composition which
+  //will be the flex item, it will have no size specified and so will go to zero
+  flex: 0 1 50%;
+  margin: 0 2rem 0 2rem;
+  @include respond(phone) {
+    margin: 2rem 2rem 2rem 2rem;
+  }
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  // align-items: stretch
+  @include respond(phone) {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}
+
+//   .col-1-of-3 {
+//     width: calc((100% - 2 *#{$gutter-horizontal}) / 3);
+//   }
+//   .col-1-of-4 {
+//     width: calc((100% - 3 *#{$gutter-horizontal}) / 4);
+//   }
+//   .col-2-of-3 {
+//     width: calc(
+//       100% - ((100% - 2 *#{$gutter-horizontal}) / 3 + #{$gutter-horizontal})
+//     );
+//   }
+//   .col-2-of-4 {
+//     width: calc(
+//       100% -
+//         (2 * (100% - 3 *#{$gutter-horizontal}) / 4 + 2 *#{$gutter-horizontal})
+//     );
+//   }
+//   .col-3-of-4 {
+//     width: calc(
+//       100% - ((100% - 3 *#{$gutter-horizontal}) / 4 + #{$gutter-horizontal})
+//     );
+//   }
+// }
+
+// .row {
+//   max-width: 114rem;
+//   //get browser to automatically calculate left and right margin
+//   //as both are auto they will be equal in size
+//   margin: 0 auto;
+
+//   &:not(:last-child) {
+//     margin-bottom: $gutter-vertical;
+//   }
+
+//   @include clearfix;
+
+//   [class^="col-"] {
+//     float: left;
+//     &:not(:last-child) {
+//       margin-right: $gutter-horizontal;
+//     }
+//   }
